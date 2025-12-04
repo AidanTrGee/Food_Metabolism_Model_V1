@@ -1,0 +1,25 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Setup venv & install",
+      "type": "shell",
+      "command": "bash",
+      "args": [
+        "-lc",
+        "if [ ! -d .venv ]; then python -m venv .venv; fi && . .venv/bin/activate && pip install -r requirements.txt"
+      ],
+      "presentation": { "reveal": "always" }
+    },
+    {
+      "label": "Run simulation (plots)",
+      "type": "shell",
+      "command": "bash",
+      "args": [
+        "-lc",
+        ". .venv/bin/activate && PYTHONPATH=src python -m Food_metabolism.scripts.run_scenario --plot"
+      ],
+      "presentation": { "reveal": "always" }
+    }
+  ]
+}

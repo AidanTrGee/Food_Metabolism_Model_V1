@@ -1,0 +1,27 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Run: Simulate metabolism",
+      "type": "python",
+      "request": "launch",
+      "module": "Food_metabolism.scripts.run_scenario",
+      "cwd": "${workspaceFolder}",
+      "console": "integratedTerminal",
+      "env": { "PYTHONPATH": "${workspaceFolder}/src" },
+      "preLaunchTask": "Setup venv & install",
+      "justMyCode": true
+    },
+    {
+      "name": "Plot: results → out/plots",
+      "type": "python",
+      "request": "launch",
+      "module": "Food_metabolism.scripts.plot_results",
+      "cwd": "${workspaceFolder}",
+      "console": "integratedTerminal",
+      "env": { "PYTHONPATH": "${workspaceFolder}/src" },
+      "preLaunchTask": "Setup venv & install",
+      "justMyCode": true
+    }
+  ]
+}

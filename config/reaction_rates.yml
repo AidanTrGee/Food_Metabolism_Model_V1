@@ -1,0 +1,733 @@
+digestion:
+  stomach:
+    base_energy_emptying_kcal_min: 2.3
+    max_emptying_rate_per_min: 2.5
+    macro_modifiers:
+      fat_coeff: 0.7
+      protein_coeff: 0.2
+    fiber:
+      reference_g: 4.0
+      beta: 0.25
+      min_modifier: 0.35
+    lag:
+      base_min: 10.0
+      fat_coeff_min: 8.0
+      fiber_coeff_min: 4.0
+  intestine:
+    lumen:
+      baseline_volume_L: 0.35
+      fiber:
+        reference_g: 4.0
+        alpha: 0.25
+        min_modifier: 0.4
+    tissue:
+      volume_L: 0.025
+    glucose_absorption:
+      sglt1_vmax_gpm: 1.8
+      sglt1_km_mM: 5.0
+      insulin_sglt1_boost: 0.2
+      glut2_vmax_gpm: 2.5
+      glut2_activation_mM: 40.0
+      glut2_switch_width_mM: 8.0
+      glut2_km_mM: 20.0
+      insulin_glut2_attenuation: 0.2
+      paracellular_vmax_gpm: 0.4
+      paracellular_km_mM: 40.0
+      paracellular_fraction_cap: 0.15
+    basolateral_export:
+      vmax_gpm: 8.0
+      km_g: 5.0
+      gradient_ref_mM: 2.0
+    protein_absorption:
+      k_per_min: 0.08
+    fat_absorption:
+      k_per_min: 0.12
+  portal_mixing:
+    glucose:
+      k_per_min: 4.0
+    protein:
+      k_per_min: 4.0
+  liver:
+    uptake:
+      vmax_gpm: 1.2
+      km_g: 10.0
+      insulin_multiplier: 0.8
+    output:
+      basal_output_gpm: 0.18
+      insulin_suppression: 0.6
+      glucagon_stimulation: 0.8
+      max_multiplier: 3.0
+    lactate_uptake:
+      vmax_gpm: 0.45
+      km_g: 10.0
+      insulin_gain: 2.0
+      glucagon_suppression: 1.5
+      reference_insulin: 0.05
+      reference_glucagon: 0.05
+      min_regulation: 0.05
+      max_regulation: 6.0
+    compartment:
+      glycogen:
+        mobilize_vmax_gpm: 0.25
+        mobilize_km_g: 40.0
+        mobilize_glucagon_gain: 2.5
+        mobilize_insulin_suppression: 1.5
+        store_vmax_gpm: 0.4
+        store_km_g: 20.0
+        store_insulin_gain: 4.5
+        store_glucagon_suppression: 2.5
+      glycolysis:
+        vmax_gpm: 0.22
+        km_g: 6.0
+        basal_regulation: 1.0
+        min_regulation: 0.05
+        max_regulation: 6.0
+        reference_insulin: 0.05
+        reference_glucagon: 0.05
+        insulin_sensitivity: 1.8
+        glucagon_sensitivity: 3.0
+        max_fraction_per_min: 0.04
+        pyruvate_yield: 0.98
+      gluconeogenesis:
+        vmax_gpm: 0.22
+        km_precursor_g: 6.0
+        basal_regulation: 1.0
+        min_regulation: 0.1
+        max_regulation: 4.0
+        insulin_suppression: 1.8
+        glucagon_stimulation: 3.2
+        reference_insulin: 0.05
+        reference_glucagon: 0.05
+        max_fraction_per_min: 0.08
+        pyruvate_yield: 0.52
+        lactate_yield: 0.5
+        alanine_yield: 0.48
+      beta_oxidation:
+        vmax_gpm: 0.14
+        km_g: 5.0
+        basal_regulation: 1.0
+        min_regulation: 0.05
+        max_regulation: 6.0
+        reference_insulin: 0.05
+        reference_glucagon: 0.05
+        insulin_suppression: 2.6
+        glucagon_stimulation: 2.2
+        exercise_stimulation: 0.5
+        max_fraction_per_min: 0.045
+        acetyl_yield: 0.7
+        ketone_fraction: 0.45
+      lipogenesis:
+        vmax_gpm: 0.28
+        km_g: 18.0
+        basal_regulation: 0.2
+        min_regulation: 0.0
+        max_regulation: 4.5
+        insulin_stimulation: 2.8
+        glucagon_suppression: 2.3
+        reference_insulin: 0.05
+        reference_glucagon: 0.05
+        max_fraction_per_min: 0.07
+        glucose_lipid_yield: 0.7
+        pyruvate_lipid_yield: 0.7
+        lactate_lipid_yield: 0.6
+        ffa_reesterification_yield: 1.0
+      energy:
+        basal_atp_demand_mmol_per_min: 12.0
+        demand_min_regulation: 0.2
+        demand_max_regulation: 6.0
+        demand_exercise_gain: 35.0
+        demand_insulin_suppression: 2.5
+        demand_glucagon_stimulation: 1.2
+        demand_reference_exercise: 0.0
+        reference_insulin: 0.05
+        reference_glucagon: 0.05
+        basal_cac_regulation: 1.0
+        cac_min_regulation: 0.1
+        cac_max_regulation: 6.0
+        cac_vmax_acoa_gpm: 0.055
+        cac_km_acoa_g: 1.8
+        cac_vmax_pyruvate_gpm: 0.045
+        cac_km_pyruvate_g: 2.5
+        cac_atp_per_g_acoa: 20.0
+        cac_atp_per_g_pyruvate: 14.0
+        cac_nadh_per_g_acoa: 6.0
+        cac_nadh_per_g_pyruvate: 4.0
+        cac_insulin_suppression: 0.8
+        cac_glucagon_stimulation: 0.6
+        cac_exercise_gain: 1.5
+        op_basal_regulation: 1.0
+        op_min_regulation: 0.2
+        op_max_regulation: 5.0
+        op_vmax_atp_mmol_per_min: 38.0
+        op_coupling_efficiency: 2.4
+        op_leak_fraction: 0.05
+        op_reference_oxygen: 0.9
+        op_oxygen_sensitivity: 1.7
+        op_exercise_stimulation: 0.6
+        op_oxygen_per_nadh: 0.5
+        max_atp_pool_mmol: 22.0
+        initial_atp_mmol: 14.0
+  periphery:
+    muscle:
+      vmax_gpm: 3.0
+      basal_fraction: 0.12
+      insulin_multiplier: 3.0
+      km_g: 3.0
+    muscle_lactate_export:
+      vmax_gpm: 0.5
+      km_g: 6.0
+      basal_fraction: 0.08
+      exercise_gain: 4.0
+      deficit_gain: 1.5
+      deficit_scale_mmol: 1.0
+      min_regulation: 0.05
+      max_regulation: 6.0
+    adipose_glucose:
+      vmax_gpm: 0.8
+      basal_fraction: 0.05
+      insulin_multiplier: 2.5
+      km_g: 3.5
+    adipose_lipid:
+      vmax_gpm: 1.4
+      km_g: 3.0
+      insulin_multiplier: 1.2
+    adipose_ffa:
+      vmax_gpm: 1.4
+      km_g: 3.0
+      insulin_multiplier: 1.2
+    adipose_release:
+      vmax_gpm: 0.6
+      km_g: 5.0
+      insulin_suppression: 4.0
+      glucagon_stimulation: 1.2
+      exercise_gain: 2.0
+    muscle_compartment:
+      glycogen:
+        mobilize_vmax_gpm: 0.45
+        mobilize_km_g: 60.0
+        mobilize_exercise_gain: 4.5
+        mobilize_glucagon_gain: 1.5
+        mobilize_insulin_suppression: 2.2
+        store_vmax_gpm: 0.55
+        store_km_g: 25.0
+        store_insulin_gain: 6.0
+        store_exercise_suppression: 3.0
+      glycolysis:
+        vmax_gpm: 0.35
+        km_g: 4.0
+        basal_regulation: 1.0
+        min_regulation: 0.05
+        max_regulation: 6.0
+        reference_insulin: 0.05
+        reference_glucagon: 0.05
+        insulin_sensitivity: 2.8
+        glucagon_sensitivity: 0.25
+        exercise_sensitivity: 4.0
+        max_fraction_per_min: 0.07
+        pyruvate_yield: 0.98
+        lactate_threshold: 0.35
+        max_lactate_fraction: 0.65
+      beta_oxidation:
+        vmax_gpm: 0.18
+        km_g: 3.0
+        basal_regulation: 1.0
+        min_regulation: 0.05
+        max_regulation: 6.0
+        reference_insulin: 0.05
+        reference_glucagon: 0.05
+        insulin_suppression: 1.8
+        glucagon_stimulation: 0.4
+        exercise_stimulation: 3.5
+        max_fraction_per_min: 0.06
+        acetyl_yield: 0.7
+        ketone_fraction: 0.0
+      lactic_fermentation:
+        vmax_gpm: 0.18
+        km_g: 2.0
+        basal_regulation: 0.25
+        min_regulation: 0.0
+        max_regulation: 6.0
+        exercise_gain: 4.5
+        deficit_gain: 2.0
+        deficit_scale_mmol: 0.75
+        oxygen_suppression: 2.5
+        reference_oxygenation: 1.0
+        max_fraction_per_min: 0.6
+        lactate_yield: 0.98
+        nad_regen_per_g: 2.0
+      energy:
+        basal_atp_demand_mmol_per_min: 24.0
+        demand_min_regulation: 0.2
+        demand_max_regulation: 6.0
+        demand_exercise_gain: 60.0
+        demand_insulin_suppression: 2.5
+        demand_glucagon_stimulation: 0.8
+        demand_reference_exercise: 0.0
+        reference_insulin: 0.05
+        reference_glucagon: 0.05
+        basal_cac_regulation: 1.0
+        cac_min_regulation: 0.1
+        cac_max_regulation: 6.0
+        cac_vmax_acoa_gpm: 0.09
+        cac_km_acoa_g: 1.8
+        cac_vmax_pyruvate_gpm: 0.08
+        cac_km_pyruvate_g: 2.5
+        cac_atp_per_g_acoa: 20.0
+        cac_atp_per_g_pyruvate: 14.0
+        cac_nadh_per_g_acoa: 6.0
+        cac_nadh_per_g_pyruvate: 4.0
+        cac_insulin_suppression: 1.2
+        cac_glucagon_stimulation: 0.6
+        cac_exercise_gain: 2.2
+        op_basal_regulation: 1.0
+        op_min_regulation: 0.2
+        op_max_regulation: 5.0
+        op_vmax_atp_mmol_per_min: 65.0
+        op_coupling_efficiency: 2.8
+        op_leak_fraction: 0.1
+        op_reference_oxygen: 1.0
+        op_oxygen_sensitivity: 1.7
+        op_exercise_stimulation: 1.2
+        op_oxygen_per_nadh: 0.5
+        max_atp_pool_mmol: 36.0
+        initial_atp_mmol: 22.0
+    adipose_compartment:
+      lipolysis:
+        vmax_gpm: 0.55
+        km_g: 60.0
+        basal_regulation: 1.0
+        min_regulation: 0.05
+        max_regulation: 6.0
+        reference_insulin: 0.05
+        reference_glucagon: 0.05
+        insulin_suppression: 4.0
+        glucagon_stimulation: 2.4
+        exercise_stimulation: 3.0
+        max_fraction_per_min: 0.025
+        ffa_fraction: 0.88
+        glycerol_fraction: 0.12
+      lipogenesis:
+        vmax_gpm: 0.22
+        km_g: 16.0
+        basal_regulation: 0.2
+        min_regulation: 0.0
+        max_regulation: 4.5
+        insulin_stimulation: 3.2
+        glucagon_suppression: 1.9
+        reference_insulin: 0.05
+        reference_glucagon: 0.05
+        max_fraction_per_min: 0.06
+        glucose_lipid_yield: 0.75
+        pyruvate_lipid_yield: 0.65
+        lactate_lipid_yield: 0.55
+        ffa_reesterification_yield: 0.95
+  lymph:
+    drainage:
+      vmax_gpm: 1.6
+      km_g: 8.0
+    chylomicron_clearance:
+      vmax_gpm: 2.0
+      km_g: 10.0
+blood_flow:
+  venous_to_lungs:
+    k_per_min: 1.5
+  lungs_to_arterial:
+    k_per_min: 4.0
+  arterial_to_venous:
+    k_per_min: 2.7
+kidney:
+  compartment:
+    gluconeogenesis:
+      vmax_gpm: 0.08
+      km_precursor_g: 6.0
+      basal_regulation: 1.0
+      min_regulation: 0.1
+      max_regulation: 4.0
+      insulin_suppression: 1.5
+      glucagon_stimulation: 1.5
+      reference_insulin: 0.05
+      reference_glucagon: 0.05
+      max_fraction_per_min: 0.05
+      pyruvate_yield: 0.52
+      lactate_yield: 0.5
+      alanine_yield: 0.48
+  threshold_mM: 10.0
+  slope_gpm_per_mM: 0.05
+  max_gpm: 3.0
+hormones:
+  pancreas_controller:
+    insulin_gain: 0.015
+    glucagon_gain: 0.01
+    basal_insulin: 0.03
+    basal_glucagon: 0.0
+    max_signal: 0.6
+    response_alpha: 0.2
+    insulin_threshold_mg_dl: 100.0
+    glucagon_threshold_mg_dl: 80.0
+
+# digestion:
+#   stomach:
+#     base_energy_emptying_kcal_min: 0
+#     max_emptying_rate_per_min: 0
+#     macro_modifiers:
+#       fat_coeff: 0
+#       protein_coeff: 0
+#     fiber:
+#       reference_g: 0
+#       beta: 0
+#       min_modifier: 0
+#     lag:
+#       base_min: 0
+#       fat_coeff_min: 0
+#       fiber_coeff_min: 0
+#   intestine:
+#     lumen:
+#       baseline_volume_L: 0
+#       fiber:
+#         reference_g: 0
+#         alpha: 0
+#         min_modifier: 0
+#     tissue:
+#       volume_L: 0
+#     glucose_absorption:
+#       sglt1_vmax_gpm: 0
+#       sglt1_km_mM: 0
+#       insulin_sglt1_boost: 0
+#       glut2_vmax_gpm: 0
+#       glut2_activation_mM: 0
+#       glut2_switch_width_mM: 0
+#       glut2_km_mM: 0
+#       insulin_glut2_attenuation: 0
+#       paracellular_vmax_gpm: 0
+#       paracellular_km_mM: 0
+#       paracellular_fraction_cap: 0
+#     basolateral_export:
+#       vmax_gpm: 0
+#       km_g: 0
+#       gradient_ref_mM: 0
+#     protein_absorption:
+#       k_per_min: 0
+#     fat_absorption:
+#       k_per_min: 0
+#   portal_mixing:
+#     glucose:
+#       k_per_min: 0
+#     protein:
+#       k_per_min: 0
+#   liver:
+#     uptake:
+#       vmax_gpm: 0
+#       km_g: 0
+#       insulin_multiplier: 0
+#     output:
+#       basal_output_gpm: 0
+#       insulin_suppression: 0
+#       glucagon_stimulation: 0
+#       max_multiplier: 0
+#     lactate_uptake:
+#       vmax_gpm: 0
+#       km_g: 0
+#       insulin_gain: 0
+#       glucagon_suppression: 0
+#       reference_insulin: 0
+#       reference_glucagon: 0
+#       min_regulation: 0
+#       max_regulation: 0
+#     compartment:
+#       glycogen:
+#         mobilize_vmax_gpm: 0
+#         mobilize_km_g: 0
+#         mobilize_glucagon_gain: 0
+#         mobilize_insulin_suppression: 0
+#         store_vmax_gpm: 0
+#         store_km_g: 0
+#         store_insulin_gain: 0
+#         store_glucagon_suppression: 0
+#       glycolysis:
+#         vmax_gpm: 0
+#         km_g: 0
+#         basal_regulation: 0
+#         min_regulation: 0
+#         max_regulation: 0
+#         reference_insulin: 0
+#         reference_glucagon: 0
+#         insulin_sensitivity: 0
+#         glucagon_sensitivity: 0
+#         max_fraction_per_min: 0
+#         pyruvate_yield: 0
+#       gluconeogenesis:
+#         vmax_gpm: 0
+#         km_precursor_g: 0
+#         basal_regulation: 0
+#         min_regulation: 0
+#         max_regulation: 0
+#         insulin_suppression: 0
+#         glucagon_stimulation: 0
+#         reference_insulin: 0
+#         reference_glucagon: 0
+#         max_fraction_per_min: 0
+#         pyruvate_yield: 0
+#         lactate_yield: 0
+#         alanine_yield: 0
+#       beta_oxidation:
+#         vmax_gpm: 0
+#         km_g: 0
+#         basal_regulation: 0
+#         min_regulation: 0
+#         max_regulation: 0
+#         reference_insulin: 0
+#         reference_glucagon: 0
+#         insulin_suppression: 0
+#         glucagon_stimulation: 0
+#         exercise_stimulation: 0
+#         max_fraction_per_min: 0
+#         acetyl_yield: 0
+#         ketone_fraction: 0
+#       lipogenesis:
+#         vmax_gpm: 0
+#         km_g: 0
+#         basal_regulation: 0
+#         min_regulation: 0
+#         max_regulation: 0
+#         insulin_stimulation: 0
+#         glucagon_suppression: 0
+#         reference_insulin: 0
+#         reference_glucagon: 0
+#         max_fraction_per_min: 0
+#         glucose_lipid_yield: 0
+#         pyruvate_lipid_yield: 0
+#         lactate_lipid_yield: 0
+#         ffa_reesterification_yield: 0
+#       energy:
+#         basal_atp_demand_mmol_per_min: 0
+#         demand_min_regulation: 0
+#         demand_max_regulation: 0
+#         demand_exercise_gain: 0
+#         demand_insulin_suppression: 0
+#         demand_glucagon_stimulation: 0
+#         demand_reference_exercise: 0
+#         reference_insulin: 0
+#         reference_glucagon: 0
+#         basal_cac_regulation: 0
+#         cac_min_regulation: 0
+#         cac_max_regulation: 0
+#         cac_vmax_acoa_gpm: 0
+#         cac_km_acoa_g: 0
+#         cac_vmax_pyruvate_gpm: 0
+#         cac_km_pyruvate_g: 0
+#         cac_atp_per_g_acoa: 0
+#         cac_atp_per_g_pyruvate: 0
+#         cac_nadh_per_g_acoa: 0
+#         cac_nadh_per_g_pyruvate: 0
+#         cac_insulin_suppression: 0
+#         cac_glucagon_stimulation: 0
+#         cac_exercise_gain: 0
+#         op_basal_regulation: 0
+#         op_min_regulation: 0
+#         op_max_regulation: 0
+#         op_vmax_atp_mmol_per_min: 0
+#         op_coupling_efficiency: 0
+#         op_leak_fraction: 0
+#         op_reference_oxygen: 0
+#         op_oxygen_sensitivity: 0
+#         op_exercise_stimulation: 0
+#         op_oxygen_per_nadh: 0
+#         max_atp_pool_mmol: 0
+#         initial_atp_mmol: 0
+#   periphery:
+#     muscle:
+#       vmax_gpm: 0
+#       basal_fraction: 0
+#       insulin_multiplier: 0
+#       km_g: 0
+#     muscle_lactate_export:
+#       vmax_gpm: 0
+#       km_g: 0
+#       basal_fraction: 0
+#       exercise_gain: 0
+#       deficit_gain: 0
+#       deficit_scale_mmol: 0
+#       min_regulation: 0
+#       max_regulation: 0
+#     adipose_glucose:
+#       vmax_gpm: 0
+#       basal_fraction: 0
+#       insulin_multiplier: 0
+#       km_g: 0
+#     adipose_lipid:
+#       vmax_gpm: 0
+#       km_g: 0
+#       insulin_multiplier: 0
+#     adipose_ffa:
+#       vmax_gpm: 0
+#       km_g: 0
+#       insulin_multiplier: 0
+#     adipose_release:
+#       vmax_gpm: 0
+#       km_g: 0
+#       insulin_suppression: 0
+#       glucagon_stimulation: 0
+#       exercise_gain: 0
+#     muscle_compartment:
+#       glycogen:
+#         mobilize_vmax_gpm: 0
+#         mobilize_km_g: 0
+#         mobilize_exercise_gain: 0
+#         mobilize_glucagon_gain: 0
+#         mobilize_insulin_suppression: 0
+#         store_vmax_gpm: 0
+#         store_km_g: 0
+#         store_insulin_gain: 0
+#         store_exercise_suppression: 0
+#       glycolysis:
+#         vmax_gpm: 0
+#         km_g: 0
+#         basal_regulation: 0
+#         min_regulation: 0
+#         max_regulation: 0
+#         reference_insulin: 0
+#         reference_glucagon: 0
+#         insulin_sensitivity: 0
+#         glucagon_sensitivity: 0
+#         exercise_sensitivity: 0
+#         max_fraction_per_min: 0
+#         pyruvate_yield: 0
+#         lactate_threshold: 0
+#         max_lactate_fraction: 0
+#       beta_oxidation:
+#         vmax_gpm: 0
+#         km_g: 0
+#         basal_regulation: 0
+#         min_regulation: 0
+#         max_regulation: 0
+#         reference_insulin: 0
+#         reference_glucagon: 0
+#         insulin_suppression: 0
+#         glucagon_stimulation: 0
+#         exercise_stimulation: 0
+#         max_fraction_per_min: 0
+#         acetyl_yield: 0
+#         ketone_fraction: 0
+#       lactic_fermentation:
+#         vmax_gpm: 0
+#         km_g: 0
+#         basal_regulation: 0
+#         min_regulation: 0
+#         max_regulation: 0
+#         exercise_gain: 0
+#         deficit_gain: 0
+#         deficit_scale_mmol: 0
+#         oxygen_suppression: 0
+#         reference_oxygenation: 0
+#         max_fraction_per_min: 0
+#         lactate_yield: 0
+#         nad_regen_per_g: 0
+#       energy:
+#         basal_atp_demand_mmol_per_min: 0
+#         demand_min_regulation: 0
+#         demand_max_regulation: 0
+#         demand_exercise_gain: 0
+#         demand_insulin_suppression: 0
+#         demand_glucagon_stimulation: 0
+#         demand_reference_exercise: 0
+#         reference_insulin: 0
+#         reference_glucagon: 0
+#         basal_cac_regulation: 0
+#         cac_min_regulation: 0
+#         cac_max_regulation: 0
+#         cac_vmax_acoa_gpm: 0
+#         cac_km_acoa_g: 0
+#         cac_vmax_pyruvate_gpm: 0
+#         cac_km_pyruvate_g: 0
+#         cac_atp_per_g_acoa: 0
+#         cac_atp_per_g_pyruvate: 0
+#         cac_nadh_per_g_acoa: 0
+#         cac_nadh_per_g_pyruvate: 0
+#         cac_insulin_suppression: 0
+#         cac_glucagon_stimulation: 0
+#         cac_exercise_gain: 0
+#         op_basal_regulation: 0
+#         op_min_regulation: 0
+#         op_max_regulation: 0
+#         op_vmax_atp_mmol_per_min: 0
+#         op_coupling_efficiency: 0
+#         op_leak_fraction: 0
+#         op_reference_oxygen: 0
+#         op_oxygen_sensitivity: 0
+#         op_exercise_stimulation: 0
+#         op_oxygen_per_nadh: 0
+#         max_atp_pool_mmol: 0
+#         initial_atp_mmol: 0
+#     adipose_compartment:
+#       lipolysis:
+#         vmax_gpm: 0
+#         km_g: 0
+#         basal_regulation: 0
+#         min_regulation: 0
+#         max_regulation: 0
+#         reference_insulin: 0
+#         reference_glucagon: 0
+#         insulin_suppression: 0
+#         glucagon_stimulation: 0
+#         exercise_stimulation: 0
+#         max_fraction_per_min: 0
+#         ffa_fraction: 0
+#         glycerol_fraction: 0
+#       lipogenesis:
+#         vmax_gpm: 0
+#         km_g: 0
+#         basal_regulation: 0
+#         min_regulation: 0
+#         max_regulation: 0
+#         insulin_stimulation: 0
+#         glucagon_suppression: 0
+#         reference_insulin: 0
+#         reference_glucagon: 0
+#         max_fraction_per_min: 0
+#         glucose_lipid_yield: 0
+#         pyruvate_lipid_yield: 0
+#         lactate_lipid_yield: 0
+#         ffa_reesterification_yield: 0
+#   lymph:
+#     drainage:
+#       vmax_gpm: 0
+#       km_g: 0
+#     chylomicron_clearance:
+#       vmax_gpm: 0
+#       km_g: 0
+# blood_flow:
+#   venous_to_lungs:
+#     k_per_min: 0
+#   lungs_to_arterial:
+#     k_per_min: 0
+#   arterial_to_venous:
+#     k_per_min: 0
+# kidney:
+#   compartment:
+#     gluconeogenesis:
+#       vmax_gpm: 0
+#       km_precursor_g: 0
+#       basal_regulation: 0
+#       min_regulation: 0
+#       max_regulation: 0
+#       insulin_suppression: 0
+#       glucagon_stimulation: 0
+#       reference_insulin: 0
+#       reference_glucagon: 0
+#       max_fraction_per_min: 0
+#       pyruvate_yield: 0
+#       lactate_yield: 0
+#       alanine_yield: 0
+#   threshold_mM: 0
+#   slope_gpm_per_mM: 0
+#   max_gpm: 0
+# hormones:
+#   pancreas_controller:
+#     insulin_gain: 0
+#     glucagon_gain: 0
+#     basal_insulin: 0
+#     basal_glucagon: 0
+#     max_signal: 0
+#     response_alpha: 0
+#     insulin_threshold_mg_dl: 0
+#     glucagon_threshold_mg_dl: 0

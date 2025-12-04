@@ -1,0 +1,48 @@
+t_end_min: 50000
+dt_min: 1.0
+
+initial:
+  venous_glucose_g: 3.2
+  arterial_glucose_g: 2.0
+  pulmonary_glucose_g: 1.6
+  liver_glucose_g: 8.0
+  muscle_glucose_g: 300.0
+  adipose_glucose_g: 20.0
+  adipose_lipid_g: 12000.0
+  venous_lipid_g: 0.3
+  arterial_lipid_g: 0.2
+
+# hormones:
+#   enabled: true
+#   target_mg_dl: 90.0
+#   insulin_gain: 0.015
+#   glucagon_gain: 0.01
+#   basal_insulin: 0.05
+#   basal_glucagon: 0.05
+#   max_signal: 0.6
+#   response_alpha: 0.2
+
+meals:
+  - time_min: 120
+    grams_carbohydrate: 300
+    grams_fat: 0
+    grams_protein: 0
+    grams_soluble_fiber: 0
+  # - time_min: 10
+  #   grams_carbohydrate: 120
+  #   grams_fat: 30
+  #   grams_protein: 50
+  #   grams_soluble_fiber: 15
+  # - time_min: 120
+  #   grams_carbohydrate: 80
+  #   grams_fat: 20
+  #   grams_protein: 25
+  #   grams_soluble_fiber: 2
+
+blood:
+  venous:
+    volume_L: 3.5
+  arterial:
+    volume_L: 2.0
+  lungs:
+    volume_L: 1.3
