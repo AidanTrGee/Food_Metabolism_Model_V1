@@ -1,4 +1,4 @@
-t_end_min: 50000
+t_end_min: 500
 dt_min: 1.0
 
 initial:
